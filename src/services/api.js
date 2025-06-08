@@ -71,4 +71,17 @@ export const deleteRecoleccion = (id) => {
   return api.delete(`/recolecciones/${id}`);
 };
 
+// Funciones para totales y cálculos
+export const getRecolectoresTotales = () => {
+  return api.get('/recolectores/totales');
+};
+
+export const getRecolectorTotal = (recolectorId) => {
+  return api.get(`/recolectores/${recolectorId}/total`);
+};
+
+export const getResumenGeneral = () => {
+  return api.get('/resumen/general');
+};
+
 export default api;

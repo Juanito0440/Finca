@@ -1,0 +1,228 @@
+/* Agregar estos estilos a tu archivo CSS principal */
+
+.totales-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header-totales {
+  display: flex;
+  justify-content: between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.header-totales h2 {
+  color: #2c5530;
+  margin: 0;
+}
+
+/* Configuración de precio */
+.precio-config {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border-left: 4px solid #28a745;
+}
+
+.precio-config h3 {
+  margin-top: 0;
+  color: #2c5530;
+}
+
+.precio-input-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.precio-input-group label {
+  font-weight: bold;
+  color: #495057;
+}
+
+.precio-input {
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 200px;
+  transition: border-color 0.3s;
+}
+
+.precio-input:focus {
+  outline: none;
+  border-color: #28a745;
+}
+
+/* Resumen general */
+.resumen-general {
+  margin-bottom: 30px;
+}
+
+.resumen-general h3 {
+  color: #2c5530;
+  margin-bottom: 15px;
+}
+
+.resumen-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.resumen-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-left: 4px solid #007bff;
+}
+
+.resumen-card.total-pagar {
+  border-left-color: #28a745;
+  background: #f8f9fa;
+}
+
+.resumen-label {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+
+.resumen-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c5530;
+}
+
+/* Tabla de totales */
+.tabla-totales h3 {
+  color: #2c5530;
+  margin-bottom: 15px;
+}
+
+.tabla-responsive {
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tabla-recolectores {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.tabla-recolectores th,
+.tabla-recolectores td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.tabla-recolectores th {
+  background: #f8f9fa;
+  font-weight: bold;
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.tabla-recolectores tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.nombre-recolector {
+  color: #2c5530;
+}
+
+.center {
+  text-align: center;
+}
+
+.badge {
+  background: #007bff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.valor-pagar {
+  text-align: right;
+}
+
+.precio-calculado {
+  color: #28a745;
+  font-size: 16px;
+}
+
+.sin-precio {
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Estados de carga y error */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+  font-size: 18px;
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
+}
+
+.no-datos {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-totales {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .precio-input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .precio-input {
+    width: 100%;
+  }
+  
+  .resumen-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .tabla-recolectores th,
+  .tabla-recolectores td {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+}

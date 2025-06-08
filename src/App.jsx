@@ -6,6 +6,7 @@ import {
   getRecolecciones,
   updateRecoleccion,
 } from "./services/api";
+import TotalesCalculos from "./components/TotalesCalculos";
 
 import "./css/style.css";
 
@@ -17,6 +18,7 @@ function App() {
   const [recolectorSeleccionado, setRecolectorSeleccionado] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [vistaActual, setVistaActual] = useState("recolectores"); // "recolectores" o "totales"
 
   // Cargar recolectores al montar el componente
   useEffect(() => {
@@ -34,8 +36,10 @@ function App() {
       }
     };
 
-    cargarRecolectores();
-  }, []);
+    if (vistaActual === "recolectores") {
+      cargarRecolectores();
+    }
+  }, [vistaActual]);
 
   const [nuevoNombre, setNuevoNombre] = useState("");
   const [nuevoTelefono, setNuevoTelefono] = useState("");
@@ -45,7 +49,6 @@ function App() {
       setLoading(true);
       setError("");
       
-      // Usar la función del servicio API en lugar de fetch directo
       const res = await createRecolector({
         nombre: nuevoNombre,
         telefono: nuevoTelefono,
@@ -53,13 +56,14 @@ function App() {
 
       alert("Recolector registrado correctamente ✅");
 
-      // Recargar lista
-      setRecolectores([
-        ...recolectores,
-        { id: res.data.id, nombre: nuevoNombre, telefono: nuevoTelefono },
-      ]);
+      // Recargar toda la lista de recolectores desde el servidor
+      const recolectoresActualizados = await getRecolectores();
+      setRecolectores(recolectoresActualizados.data);
+      
+      // Limpiar el formulario
       setNuevoNombre("");
       setNuevoTelefono("");
+      
     } catch (error) {
       console.error("Error al registrar recolector:", error);
       setError("Error al registrar recolector");
@@ -126,141 +130,158 @@ function App() {
   return (
     <div className="container">
       <div className="header">
-        <h1>Finca La Esmeralda</h1>
+        <h1>🌿 Finca La Esmeralda</h1>
         <p className="fecha-actual">
           Fecha actual: {new Date().toLocaleString()}
         </p>
       </div>
 
+      {/* Navegación entre vistas */}
+      <div className="navigation-tabs">
+        <button 
+          className={`nav-tab ${vistaActual === "recolectores" ? "active" : ""}`}
+          onClick={() => setVistaActual("recolectores")}
+        >
+          👥 Gestión de Recolectores
+        </button>
+        <button 
+          className={`nav-tab ${vistaActual === "totales" ? "active" : ""}`}
+          onClick={() => setVistaActual("totales")}
+        >
+          📊 Totales y Pagos
+        </button>
+      </div>
+
       {/* Mostrar errores si existen */}
       {error && (
-        <div className="error-message" style={{ 
-          color: 'red', 
-          background: '#ffebee', 
-          padding: '10px', 
-          borderRadius: '4px',
-          margin: '10px 0'
-        }}>
+        <div className="error-message">
           {error}
         </div>
       )}
 
       {/* Indicador de carga */}
-      {loading && (
-        <div className="loading" style={{ 
-          textAlign: 'center', 
-          padding: '10px',
-          color: '#666'
-        }}>
+      {loading && vistaActual === "recolectores" && (
+        <div className="loading">
           Cargando...
         </div>
       )}
 
-      <h2>Registrar Nuevo Recolector</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleNuevoRecolector();
-        }}
-      >
-        <input
-          type="text"
-          placeholder="Nombre"
-          value={nuevoNombre}
-          onChange={(e) => setNuevoNombre(e.target.value)}
-          required
-          disabled={loading}
-        />
-        <input
-          type="text"
-          placeholder="Teléfono"
-          value={nuevoTelefono}
-          onChange={(e) => setNuevoTelefono(e.target.value)}
-          required
-          disabled={loading}
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Registrando..." : "Registrar"}
-        </button>
-      </form>
+      {/* Vista de gestión de recolectores */}
+      {vistaActual === "recolectores" && (
+        <>
+          <h2>Registrar Nuevo Recolector</h2>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleNuevoRecolector();
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Nombre"
+              value={nuevoNombre}
+              onChange={(e) => setNuevoNombre(e.target.value)}
+              required
+              disabled={loading}
+            />
+            <input
+              type="text"
+              placeholder="Teléfono"
+              value={nuevoTelefono}
+              onChange={(e) => setNuevoTelefono(e.target.value)}
+              required
+              disabled={loading}
+            />
+            <button type="submit" disabled={loading}>
+              {loading ? "Registrando..." : "Registrar"}
+            </button>
+          </form>
 
-      <h2>Recolectores</h2>
-      {recolectores.map((r) => (
-        <div key={r.id} className="recolector-card">
-          <div className="recolector-info">
-            <strong>{r.nombre}</strong>
-            <div className="recolector-telefono">{r.telefono}</div>
+          <h2>Recolectores</h2>
+          {recolectores.map((r) => (
+            <div key={r.id} className="recolector-card">
+              <div className="recolector-info">
+                <strong>{r.nombre}</strong>
+                <div className="recolector-telefono">{r.telefono}</div>
 
-            {recolectorSeleccionado === r.id && (
-              <div className="form-recoleccion">
-                <input
-                  type="number"
-                  placeholder="Cantidad (kg)"
-                  value={cantidad}
-                  onChange={(e) => setCantidad(e.target.value)}
-                  disabled={loading}
-                />
+                {recolectorSeleccionado === r.id && (
+                  <div className="form-recoleccion">
+                    <input
+                      type="number"
+                      step="0.1"
+                      placeholder="Cantidad (kg)"
+                      value={cantidad}
+                      onChange={(e) => setCantidad(e.target.value)}
+                      disabled={loading}
+                    />
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        handleAgregarRecoleccion(r.id);
+                        setCantidad("");
+                        setRecolectorSeleccionado(null);
+                      }}
+                      disabled={loading}
+                    >
+                      {loading ? "Guardando..." : "Guardar"}
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              <div className="recolector-actions">
                 <button
                   className="btn btn-primary"
-                  onClick={() => {
-                    handleAgregarRecoleccion(r.id);
-                    setCantidad("");
-                    setRecolectorSeleccionado(null);
-                  }}
+                  onClick={() => setRecolectorSeleccionado(r.id)}
                   disabled={loading}
                 >
-                  {loading ? "Guardando..." : "Guardar"}
+                  Agregar Recolección
                 </button>
-              </div>
-            )}
-          </div>
-
-          <div className="recolector-actions">
-            <button
-              className="btn btn-primary"
-              onClick={() => setRecolectorSeleccionado(r.id)}
-              disabled={loading}
-            >
-              Agregar Recolección
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => handleVerRecolecciones(r.id)}
-              disabled={loading}
-            >
-              Ver Recolecciones
-            </button>
-          </div>
-        </div>
-      ))}
-
-      {selectedId && (
-        <>
-          <h3>Recolecciones</h3>
-          <div className="recoleccion-list">
-            {recolecciones.map((rec) => (
-              <div key={rec.id} className="recoleccion-item">
-                <span>
-                  {rec.fecha} - {rec.cantidad} kg
-                </span>
                 <button
-                  className="btn btn-warning"
-                  onClick={() => {
-                    const nuevaCantidad = prompt(
-                      "Editar cantidad:",
-                      rec.cantidad
-                    );
-                    if (nuevaCantidad) handleEditar(rec.id, nuevaCantidad);
-                  }}
+                  className="btn btn-secondary"
+                  onClick={() => handleVerRecolecciones(r.id)}
                   disabled={loading}
                 >
-                  Editar
+                  Ver Recolecciones
                 </button>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+
+          {selectedId && (
+            <>
+              <h3>Recolecciones</h3>
+              <div className="recoleccion-list">
+                {recolecciones.map((rec) => (
+                  <div key={rec.id} className="recoleccion-item">
+                    <span>
+                      {rec.fecha} - <strong>{rec.cantidad} kg</strong>
+                    </span>
+                    <button
+                      className="btn btn-warning"
+                      onClick={() => {
+                        const nuevaCantidad = prompt(
+                          "Editar cantidad:",
+                          rec.cantidad
+                        );
+                        if (nuevaCantidad && nuevaCantidad !== rec.cantidad) {
+                          handleEditar(rec.id, nuevaCantidad);
+                        }
+                      }}
+                      disabled={loading}
+                    >
+                      Editar
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </>
       )}
+
+      {/* Vista de totales y cálculos */}
+      {vistaActual === "totales" && <TotalesCalculos />}
     </div>
   );
 }
