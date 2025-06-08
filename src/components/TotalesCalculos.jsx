@@ -16,7 +16,7 @@ const TotalesCalculos = () => {
   const [totales, setRecolectoresTotales] = useState([]);
   const [resumenGeneral, setResumenGeneral] = useState(null);
   const [precioKilo, setPrecioKilo] = useState("");
-  const [precioKg, setPrecioKg] = useState(2500);
+  const [precioKg, setPrecioKg] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -93,8 +93,9 @@ const TotalesCalculos = () => {
             step="0.01"
             min="0"
             value={precioKilo}
-            onChange={(e) => setPrecioKilo(e.target.value)}
-            placeholder="Ej: 2500"
+            onChange={(e) => {setPrecioKilo(e.target.value), setPrecioKg(e.target.value)}}
+            
+            placeholder="Ej: 1000"
             className="precio-input"
           />
         </div>
