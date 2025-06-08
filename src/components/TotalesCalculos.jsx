@@ -3,7 +3,7 @@ import { getRecolectoresTotales, getResumenGeneral } from '../services/api';
 import '../css/totalesCalculos.css'; 
 
 const TotalesCalculos = () => {
-  const [totales, setTotales] = useState([]);
+  const [totales, setRecolectoresTotales] = useState([]);
   const [resumenGeneral, setResumenGeneral] = useState(null);
   const [precioKilo, setPrecioKilo] = useState('');
   const [loading, setLoading] = useState(false);
@@ -142,8 +142,8 @@ const TotalesCalculos = () => {
                     <td className="nombre-recolector">
                       <User size={16} className="inline-icon" />
                       {recolector.nombre}
-                    </td>
-                    <td>
+                        </td>
+                        <td>
                       <Phone size={14} className="inline-icon" />
                       {recolector.telefono}
                     </td>
