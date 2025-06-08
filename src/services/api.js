@@ -84,4 +84,6 @@ export const getResumenGeneral = () => {
   return api.get('/resumen/general');
 };
 
+
+
 export default api;

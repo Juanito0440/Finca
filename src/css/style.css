@@ -468,3 +468,480 @@ input[type="number"] {
     font-size: 14px;
   }
 }
+
+/* Estilos mejorados - Agregar al final de tu archivo CSS */
+
+/* Sección de formulario */
+.form-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid #dee2e6;
+}
+
+.form-section h2 {
+  color: #2c5530;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+/* Formulario de nuevo recolector */
+.nuevo-recolector-form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: #6c757d;
+  z-index: 1;
+}
+
+.input-with-icon input {
+  padding-left: 45px !important;
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.input-with-icon input:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.btn-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Sección de recolectores */
+.recolectores-section h2 {
+  color: #2c5530;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.recolectores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Tarjetas modernas de recolectores */
+.recolector-card-modern {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.recolector-card-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.recolector-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.recolector-avatar {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.recolector-info {
+  flex: 1;
+}
+
+.recolector-nombre {
+  margin: 0;
+  color: #2c5530;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.recolector-telefono {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* Formulario moderno de recolección */
+.form-recoleccion-modern {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border-left: 4px solid #28a745;
+}
+
+.recoleccion-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-icon-small {
+  color: #6c757d;
+  flex-shrink: 0;
+}
+
+.cantidad-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.cantidad-input:focus {
+  outline: none;
+  border-color: #28a745;
+}
+
+.recoleccion-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.btn-success-small, .btn-cancel-small {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-success-small {
+  background: #28a745;
+  color: white;
+}
+
+.btn-cancel-small {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-success-small:hover:not(:disabled) {
+  background: #218838;
+  transform: scale(1.05);
+}
+
+.btn-cancel-small:hover:not(:disabled) {
+  background: #c82333;
+  transform: scale(1.05);
+}
+
+/* Acciones de recolector */
+.recolector-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-primary-icon, .btn-secondary-icon, .btn-danger-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-icon {
+  background: #28a745;
+  color: white;
+}
+
+.btn-secondary-icon {
+  background: #007bff;
+  color: white;
+}
+
+.btn-danger-icon {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-primary-icon:hover:not(:disabled) {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.btn-secondary-icon:hover:not(:disabled) {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.btn-danger-icon:hover:not(:disabled) {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+/* Sección de recolecciones */
+.recolecciones-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #e9ecef;
+}
+
+.recolecciones-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+.recolecciones-header h3 {
+  color: #2c5530;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.btn-close {
+  background: #6c757d;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-close:hover {
+  background: #5a6268;
+  transform: scale(1.1);
+}
+
+/* Lista moderna de recolecciones */
+.recoleccion-list-modern {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.recoleccion-item-modern {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-left: 4px solid #007bff;
+  transition: all 0.3s ease;
+}
+
+.recoleccion-item-modern:hover {
+  background: #e9ecef;
+  transform: translateX(4px);
+}
+
+.recoleccion-numero {
+  background: #007bff;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.recoleccion-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recoleccion-fecha, .recoleccion-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.recoleccion-fecha {
+  color: #6c757d;
+}
+
+.recoleccion-cantidad {
+  color: #28a745;
+}
+
+.btn-edit-icon {
+  background: #ffc107;
+  color: #212529;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-edit-icon:hover:not(:disabled) {
+  background: #e0a800;
+  transform: scale(1.05);
+}
+
+/* Resumen de recolecciones */
+.recolecciones-resumen {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.resumen-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resumen-item span {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.resumen-item strong {
+  color: #2c5530;
+  font-size: 1.1rem;
+}
+
+/* Estados sin datos */
+.no-datos {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #6c757d;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 2px dashed #dee2e6;
+}
+
+.no-datos-icon {
+  color: #adb5bd;
+  margin-bottom: 1rem;
+}
+
+.no-datos p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.no-datos-subtitle {
+  font-size: 0.9rem !important;
+  color: #adb5bd !important;
+  font-weight: normal !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .input-group {
+    grid-template-columns: 1fr;
+  }
+  
+  .recolectores-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .recolector-actions {
+    justify-content: center;
+  }
+  
+  .recoleccion-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .recolecciones-resumen {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
