@@ -108,7 +108,7 @@
 
 /* Tabla de totales */
 .tabla-totales h3 {
-  color: #2c5530;
+  color: #2c5530;   
   margin-bottom: 15px;
 }
 
@@ -217,7 +217,7 @@
   }
   
   .resumen-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 0.5fr;
   }
   
   .tabla-recolectores th,
