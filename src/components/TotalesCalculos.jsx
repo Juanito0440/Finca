@@ -10,6 +10,7 @@ import {
   Phone,
   Calendar,
   Weight,
+  Package
 } from "lucide-react";
 const TotalesCalculos = () => {
   const [totales, setRecolectoresTotales] = useState([]);
