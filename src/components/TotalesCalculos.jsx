@@ -14,6 +14,7 @@ import {
 const TotalesCalculos = () => {
   const [totales, setRecolectoresTotales] = useState([]);
   const [resumenGeneral, setResumenGeneral] = useState(null);
+  const [precioKilo, setPrecioKilo] = useState("");
   const [precioKg, setPrecioKg] = useState(2500);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
