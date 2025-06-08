@@ -406,7 +406,16 @@ function App() {
                         className="btn btn-edit-icon"
                         onClick={() => {
                           const nuevaCantidad = prompt(
-                            `Editar cantidad para ${rec.fecha}:`,
+                            `Editar cantidad para ${new Date(
+                              rec.fecha
+                            ).toLocaleString("es-CO", {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              hour12: true,
+                            })}:`,
                             rec.cantidad
                           );
                           if (
