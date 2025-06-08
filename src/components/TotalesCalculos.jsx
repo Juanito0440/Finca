@@ -3,7 +3,7 @@ import { getRecolectoresTotales, getResumenGeneral } from '../services/api';
 import '../css/totalesCalculos.css'; 
 
 const TotalesCalculos = () => {
-  const [recolectoresTotales, setRecolectoresTotales] = useState([]);
+  const [totales, setTotales] = useState([]);
   const [resumenGeneral, setResumenGeneral] = useState(null);
   const [precioKilo, setPrecioKilo] = useState('');
   const [loading, setLoading] = useState(false);
