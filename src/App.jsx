@@ -5,7 +5,7 @@ import {
   createRecoleccion,
   getRecolecciones,
   updateRecoleccion,
-  deleteRecolector
+  deleteRecolector,
 } from "./services/api";
 import TotalesCalculos from "./components/TotalesCalculos";
 import {
@@ -245,7 +245,7 @@ function App() {
               </button>
             </div>
           </div>
-          
+
           <div className="recolectores-section">
             <h2>👥 Lista de Recolectores ({recolectores.length})</h2>
             {recolectores.length === 0 ? (
@@ -352,7 +352,7 @@ function App() {
               </div>
             )}
           </div>
-          
+
           {selectedId && (
             <div className="recolecciones-section">
               <div className="recolecciones-header">
@@ -388,7 +388,14 @@ function App() {
                       <div className="recoleccion-info">
                         <div className="recoleccion-fecha">
                           <Calendar size={16} />
-                          {rec.fecha}
+                          {new Date(rec.fecha).toLocaleString("es-CO", {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: true,
+                          })}
                         </div>
                         <div className="recoleccion-cantidad">
                           <Weight size={16} />
