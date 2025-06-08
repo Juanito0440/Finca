@@ -244,7 +244,7 @@ function App() {
               </button>
             </div>
           </div>
-          // 4. Reemplaza la sección de recolectores con esta versión mejorada:
+          
           <div className="recolectores-section">
             <h2>👥 Lista de Recolectores ({recolectores.length})</h2>
             {recolectores.length === 0 ? (
@@ -351,7 +351,7 @@ function App() {
               </div>
             )}
           </div>
-          // 5. Reemplaza la sección de recolecciones con esta versión mejorada:
+          
           {selectedId && (
             <div className="recolecciones-section">
               <div className="recolecciones-header">
