@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { getRecolectoresTotales, getResumenGeneral } from '../services/api';
 import '../css/totalesCalculos.css'; 
-
+import {
+  Trash2,
+  Plus,
+  Eye,
+  Edit,
+  User,
+  Phone,
+  Calendar,
+  Weight,
+} from "lucide-react";
 const TotalesCalculos = () => {
   const [totales, setRecolectoresTotales] = useState([]);
   const [resumenGeneral, setResumenGeneral] = useState(null);
   const [precioKilo, setPrecioKilo] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
 
   useEffect(() => {
     cargarDatos();
