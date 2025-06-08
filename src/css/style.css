@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+  font-family: "Segoe UI", Roboto, Helvetica, sans-serif;
 }
 
 body {
@@ -29,7 +29,7 @@ body {
   padding: 1rem 2rem;
   border-radius: 10px;
   margin-bottom: 2rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .header h1 {
@@ -43,7 +43,7 @@ form {
   padding: 1.5rem;
   margin-bottom: 2rem;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 form input,
@@ -81,7 +81,7 @@ form button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .recolector-info {
@@ -201,7 +201,6 @@ input[type="number"] {
 .form-recoleccion button {
   margin-top: 0.5rem;
 }
-
 
 /* Agregar estos estilos a tu archivo CSS principal */
 
@@ -323,7 +322,7 @@ input[type="number"] {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -358,7 +357,7 @@ input[type="number"] {
   overflow-x: auto;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .tabla-recolectores {
@@ -439,7 +438,7 @@ input[type="number"] {
   color: #6c757d;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive */
@@ -448,20 +447,20 @@ input[type="number"] {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .precio-input-group {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .precio-input {
     width: 100%;
   }
-  
+
   .resumen-cards {
     grid-template-columns: 1fr;
   }
-  
+
   .tabla-recolectores th,
   .tabla-recolectores td {
     padding: 10px 8px;
@@ -491,7 +490,7 @@ input[type="number"] {
   background: white;
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .input-group {
@@ -574,7 +573,7 @@ input[type="number"] {
   background: white;
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border: 1px solid #e9ecef;
   transition: all 0.3s ease;
   position: relative;
@@ -582,7 +581,7 @@ input[type="number"] {
 
 .recolector-card-modern:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .recolector-header {
@@ -662,7 +661,8 @@ input[type="number"] {
   gap: 4px;
 }
 
-.btn-success-small, .btn-cancel-small {
+.btn-success-small,
+.btn-cancel-small {
   width: 32px;
   height: 32px;
   border: none;
@@ -702,7 +702,9 @@ input[type="number"] {
   flex-wrap: wrap;
 }
 
-.btn-primary-icon, .btn-secondary-icon, .btn-danger-icon {
+.btn-primary-icon,
+.btn-secondary-icon,
+.btn-danger-icon {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -751,7 +753,7 @@ input[type="number"] {
   border-radius: 12px;
   padding: 1.5rem;
   margin-top: 2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border: 1px solid #e9ecef;
 }
 
@@ -831,7 +833,8 @@ input[type="number"] {
   align-items: center;
 }
 
-.recoleccion-fecha, .recoleccion-cantidad {
+.recoleccion-fecha,
+.recoleccion-cantidad {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -899,7 +902,7 @@ input[type="number"] {
   color: #6c757d;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 2px dashed #dee2e6;
 }
 
@@ -925,23 +928,223 @@ input[type="number"] {
   .input-group {
     grid-template-columns: 1fr;
   }
-  
+
   .recolectores-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .recolector-actions {
     justify-content: center;
   }
-  
+
   .recoleccion-info {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
-  
+
   .recolecciones-resumen {
     flex-direction: column;
     gap: 1rem;
+  }
+}
+
+/* Vista Mobile - Cards */
+.recolector-total-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  border-left: 4px solid #6366f1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recolector-total-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.recolector-info-mobile {
+  flex: 1;
+}
+
+.recolector-nombre-mobile {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 6px 0;
+}
+
+.recolector-telefono-mobile {
+  color: #64748b;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.stat-icon {
+  color: #6366f1;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-top: 2px;
+}
+
+.badge-mobile {
+  background: #6366f1;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.pago-label {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pago-valor {
+  font-weight: 600;
+}
+
+.precio-calculado-mobile {
+  color: #10b981;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+  font-size: 18px;
+}
+
+.error-message {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #fecaca;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .navigation-tabs {
+    flex-direction: column;
+  }
+
+  .header-totales {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .precio-input-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .precio-input {
+    width: 100%;
+  }
+
+  .resumen-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  /* Ocultar tabla en móvil, mostrar cards */
+  .desktop-table {
+    display: none;
+  }
+
+  .mobile-cards {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .recolector-total-card {
+    padding: 16px;
+  }
+
+  .card-stats {
+    gap: 10px;
+  }
+
+  .stat-item {
+    padding: 10px;
   }
 }

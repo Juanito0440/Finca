@@ -118,7 +118,112 @@ const TotalesCalculos = () => {
         </div>
       )}
 
-      {/* Tabla de recolectores */}
+      {/* Tabla de totales - Desktop y Mobile responsive */}
+      <div className="tabla-totales">
+        <h3>👥 Detalle por Recolector</h3>
+        
+        {/* Vista Desktop - Tabla tradicional */}
+        <div className="desktop-table">
+          <div className="tabla-responsive">
+            <table className="tabla-recolectores">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Teléfono</th>
+                  <th className="center">Total Kg</th>
+                  <th className="center">Recolecciones</th>
+                  <th className="center">ID</th>
+                  <th className="valor-pagar">Valor a Pagar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {totales.map((recolector) => (
+                  <tr key={recolector.id}>
+                    <td className="nombre-recolector">
+                      <User size={16} className="inline-icon" />
+                      {recolector.nombre}
+                    </td>
+                    <td>
+                      <Phone size={14} className="inline-icon" />
+                      {recolector.telefono}
+                    </td>
+                    <td className="center">
+                      <Weight size={14} className="inline-icon" />
+                      {recolector.total_recolectado} kg
+                    </td>
+                    <td className="center">
+                      <span className="badge">{recolector.num_recolecciones}</span>
+                    </td>
+                    <td className="center">
+                      <div className="recolector-badge">{recolector.id}</div>
+                    </td>
+                    <td className="valor-pagar">
+                      {precioKg > 0 ? (
+                        <span className="precio-calculado">
+                          ${(recolector.total_recolectado * precioKg).toLocaleString()}
+                        </span>
+                      ) : (
+                        <span className="sin-precio">Configure el precio</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Vista Mobile - Cards */}
+        <div className="mobile-cards">
+          {totales.map((recolector) => (
+            <div key={recolector.id} className="recolector-total-card">
+              <div className="card-header">
+                <div className="recolector-info-mobile">
+                  <h4 className="recolector-nombre-mobile">{recolector.nombre}</h4>
+                  <div className="recolector-telefono-mobile">
+                    <Phone size={14} />
+                    {recolector.telefono}
+                  </div>
+                </div>
+                <div className="recolector-badge">{recolector.id}</div>
+              </div>
+              
+              <div className="card-stats">
+                <div className="stat-item">
+                  <Weight size={16} className="stat-icon" />
+                  <div className="stat-content">
+                    <span className="stat-label">Total recolectado</span>
+                    <span className="stat-value">{recolector.total_recolectado} kg</span>
+                  </div>
+                </div>
+                
+                <div className="stat-item">
+                  <Package size={16} className="stat-icon" />
+                  <div className="stat-content">
+                    <span className="stat-label">Recolecciones</span>
+                    <span className="stat-value badge-mobile">{recolector.num_recolecciones}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="card-footer">
+                <span className="pago-label">Total a pagar:</span>
+                <span className="pago-valor">
+                  {precioKg > 0 ? (
+                    <span className="precio-calculado-mobile">
+                      ${(recolector.total_recolectado * precioKg).toLocaleString()}
+                    </span>
+                  ) : (
+                    <span className="sin-precio">Configure precio</span>
+                  )}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Tabla de recolectores
       <div className="tabla-totales">
         <h3>👥 Totales por Recolector</h3>
         <div className="tabla-responsive">
@@ -166,7 +271,9 @@ const TotalesCalculos = () => {
           <p>No hay recolectores registrados</p>
         </div>
       )}
-    </div>
+        */} 
+
+    </div> 
   );
 };
 
