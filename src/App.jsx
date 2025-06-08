@@ -5,6 +5,7 @@ import {
   createRecoleccion,
   getRecolecciones,
   updateRecoleccion,
+  deleteRecolector
 } from "./services/api";
 import TotalesCalculos from "./components/TotalesCalculos";
 import {
