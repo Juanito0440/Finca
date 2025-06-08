@@ -15,9 +15,26 @@ function App() {
   const [recolecciones, setRecolecciones] = useState([]);
   const [cantidad, setCantidad] = useState("");
   const [recolectorSeleccionado, setRecolectorSeleccionado] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
+  // Cargar recolectores al montar el componente
   useEffect(() => {
-    getRecolectores().then((res) => setRecolectores(res.data));
+    const cargarRecolectores = async () => {
+      try {
+        setLoading(true);
+        const res = await getRecolectores();
+        setRecolectores(res.data);
+        setError("");
+      } catch (error) {
+        console.error("Error al cargar recolectores:", error);
+        setError("Error al cargar los recolectores");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    cargarRecolectores();
   }, []);
 
   const [nuevoNombre, setNuevoNombre] = useState("");
@@ -25,49 +42,85 @@ function App() {
 
   const handleNuevoRecolector = async () => {
     try {
-      const res = await fetch("http://localhost:3001/recolectores", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nombre: nuevoNombre,
-          telefono: nuevoTelefono,
-        }),
+      setLoading(true);
+      setError("");
+      
+      // Usar la función del servicio API en lugar de fetch directo
+      const res = await createRecolector({
+        nombre: nuevoNombre,
+        telefono: nuevoTelefono,
       });
 
-      const data = await res.json();
       alert("Recolector registrado correctamente ✅");
 
       // Recargar lista
       setRecolectores([
         ...recolectores,
-        { id: data.id, nombre: nuevoNombre, telefono: nuevoTelefono },
+        { id: res.data.id, nombre: nuevoNombre, telefono: nuevoTelefono },
       ]);
       setNuevoNombre("");
       setNuevoTelefono("");
     } catch (error) {
-      console.error("Error al registrar recolector", error);
+      console.error("Error al registrar recolector:", error);
+      setError("Error al registrar recolector");
       alert("❌ Error al registrar recolector");
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleAgregarRecoleccion = async (id) => {
-    await createRecoleccion({ recolector_id: id, cantidad });
-    const res = await getRecolecciones(id);
-    setRecolecciones(res.data);
+    try {
+      setLoading(true);
+      setError("");
+      
+      await createRecoleccion({ recolector_id: id, cantidad });
+      const res = await getRecolecciones(id);
+      setRecolecciones(res.data);
+      
+      alert("Recolección agregada correctamente ✅");
+    } catch (error) {
+      console.error("Error al agregar recolección:", error);
+      setError("Error al agregar recolección");
+      alert("❌ Error al agregar recolección");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleVerRecolecciones = async (id) => {
-    setSelectedId(id);
-    const res = await getRecolecciones(id);
-    setRecolecciones(res.data);
+    try {
+      setLoading(true);
+      setError("");
+      
+      setSelectedId(id);
+      const res = await getRecolecciones(id);
+      setRecolecciones(res.data);
+    } catch (error) {
+      console.error("Error al cargar recolecciones:", error);
+      setError("Error al cargar recolecciones");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleEditar = async (id, nuevaCantidad) => {
-    await updateRecoleccion(id, { cantidad: nuevaCantidad });
-    const res = await getRecolecciones(selectedId);
-    setRecolecciones(res.data);
+    try {
+      setLoading(true);
+      setError("");
+      
+      await updateRecoleccion(id, { cantidad: nuevaCantidad });
+      const res = await getRecolecciones(selectedId);
+      setRecolecciones(res.data);
+      
+      alert("Recolección actualizada correctamente ✅");
+    } catch (error) {
+      console.error("Error al editar recolección:", error);
+      setError("Error al editar recolección");
+      alert("❌ Error al editar recolección");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -78,6 +131,30 @@ function App() {
           Fecha actual: {new Date().toLocaleString()}
         </p>
       </div>
+
+      {/* Mostrar errores si existen */}
+      {error && (
+        <div className="error-message" style={{ 
+          color: 'red', 
+          background: '#ffebee', 
+          padding: '10px', 
+          borderRadius: '4px',
+          margin: '10px 0'
+        }}>
+          {error}
+        </div>
+      )}
+
+      {/* Indicador de carga */}
+      {loading && (
+        <div className="loading" style={{ 
+          textAlign: 'center', 
+          padding: '10px',
+          color: '#666'
+        }}>
+          Cargando...
+        </div>
+      )}
 
       <h2>Registrar Nuevo Recolector</h2>
       <form
@@ -92,6 +169,7 @@ function App() {
           value={nuevoNombre}
           onChange={(e) => setNuevoNombre(e.target.value)}
           required
+          disabled={loading}
         />
         <input
           type="text"
@@ -99,8 +177,11 @@ function App() {
           value={nuevoTelefono}
           onChange={(e) => setNuevoTelefono(e.target.value)}
           required
+          disabled={loading}
         />
-        <button type="submit">Registrar</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Registrando..." : "Registrar"}
+        </button>
       </form>
 
       <h2>Recolectores</h2>
@@ -117,6 +198,7 @@ function App() {
                   placeholder="Cantidad (kg)"
                   value={cantidad}
                   onChange={(e) => setCantidad(e.target.value)}
+                  disabled={loading}
                 />
                 <button
                   className="btn btn-primary"
@@ -125,8 +207,9 @@ function App() {
                     setCantidad("");
                     setRecolectorSeleccionado(null);
                   }}
+                  disabled={loading}
                 >
-                  Guardar
+                  {loading ? "Guardando..." : "Guardar"}
                 </button>
               </div>
             )}
@@ -136,12 +219,14 @@ function App() {
             <button
               className="btn btn-primary"
               onClick={() => setRecolectorSeleccionado(r.id)}
+              disabled={loading}
             >
               Agregar Recolección
             </button>
             <button
               className="btn btn-secondary"
               onClick={() => handleVerRecolecciones(r.id)}
+              disabled={loading}
             >
               Ver Recolecciones
             </button>
@@ -167,6 +252,7 @@ function App() {
                     );
                     if (nuevaCantidad) handleEditar(rec.id, nuevaCantidad);
                   }}
+                  disabled={loading}
                 >
                   Editar
                 </button>
@@ -178,4 +264,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
